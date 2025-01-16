@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/style/Ajoutter_Modifier.css">
+<link rel="stylesheet" href="/style/Ajoutter.css">
 </head>
 <body>
 <header><h1>Ajouter une nouvelle recette</h1></header>  
-<div class="image-previe"><img src="/images/ajoute.webp" alt=""></div> 
+<div class="image-previe"><img src="/images/Ajoute.webp" alt=""></div> 
 
          <div class="container">
             
@@ -19,12 +19,22 @@
                     <textarea name="" id="Description" rows="4" placeholder="Entrer un Description"></textarea>
                     <label for="recipe-name">Temps de cuisson</label>
                     <input type="text" id="recipe-name" placeholder="Entrez la durée">
-                    <label for="recipe-name">Catégorie</label>
-                    <input type="text" id="recipe-name" placeholder="Entrez la Catégorie">
-                    <label for="recipe-name">image</label>
-                    <input type="text" id="recipe-name" placeholder="Entrer un image">
+                    <div class="imag">
+                    <label for="Image">Ajouter un image </label>
+                    <input type="file" accept="image/*">
+
+                    </div>
                     <label for="recipe-name">ingredientts</label>
                     <textarea name="" id="ingredientts" rows="4" placeholder="Entrer les ingredientts"></textarea>
+                    <label for="recipe-name">Catégorie</label>
+                    <div class="choix">
+                        <select required>
+                            <option value="">Choix </option>
+                            <option value="Entrez">Entrez</option>
+                            <option value="Platprincipale">Plat principale</option>
+                            <option value="dessert">Dessert</option>
+                        </select>
+                    </div>
                 <div class="buttons">
                     <button type="submit">Enregistrer</button>
                     <button type="button">Annuler</button>
@@ -32,6 +42,7 @@
                 </form>
             </div>
          </div>
+         
         
 </body>
 </html>
