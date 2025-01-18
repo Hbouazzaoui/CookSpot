@@ -1,5 +1,5 @@
-const deleteButton = document.getElementById('delete-button');
 
+<<<<<<< HEAD
 deleteButton.addEventListener('click', () => {
   const userConfirmed = confirm('Êtes-vous sûr de vouloir supprimer cette recette ?');
   if (userConfirmed) {
@@ -11,3 +11,5 @@ deleteButton.addEventListener('click', () => {
 
 
 
+=======
+>>>>>>> e0e0024 (créer Les étapes et les Ingrédients)
