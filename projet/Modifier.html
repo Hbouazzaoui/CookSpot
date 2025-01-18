@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mettre à Jour leurs Recettes</title>
     <link rel="stylesheet" href="/style/Modifier.css">
+    
 </head>
 <body>
-    <header>Mettre à jour leurs recettes</header>
+    <header><h1>Mettre à jour leurs recettes</h1></header>
     <div class="container">
         <div class="image-preview">
             <img src="/images/upd.webp" alt="Aperçu de la recette">
@@ -24,7 +25,24 @@
                 <input type="text" id="cook-time" placeholder="Temps de cuisson">
 
                 <label for="category">Category</label>
-                <input type="text" id="category" placeholder="Catégorie">
+                <!-- <input type="text" id="category" placeholder="Catégorie"> -->
+                <select required class="catigori">
+                    <option value="">Sélectionnez une Catégorie</option>
+                    <option value="entrée">Entrée</option>
+                    <option value="plat principal">Plat Principal</option>
+                    <option value="dessert">Dessert</option>
+                </select>
+                
+                                <!-- Ajouter une image -->
+                                    <label for="file-ip-1">Ajouter une image</label>
+                            <div class="imag">
+                                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event)" hidden>
+                                <button type="button" onclick="document.getElementById('file-ip-1').click()">Choisir un fichier</button>
+                                <p id="file-name"></p>
+                            </div>
+                            <div class="preview">
+                                <img src="" alt="Prévisualisation" id="file-ip-1-preview" style="display: none;">
+                            </div>
 
                 <label for="ingredients">Ingredients</label>
                 <textarea id="ingredients" rows="4" placeholder="Entrez les ingrédients"></textarea>
@@ -34,7 +52,23 @@
                     <button type="button">Annuler</button>
                 </div>
             </form>
+            
         </div>
     </div>
+   <!-- Script pour afficher l'aperçu de l'image -->
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var file = event.target.files[0];
+            var src = URL.createObjectURL(file);
+            var preview = document.getElementById("file-ip-1-preview");
+            var fileName = document.getElementById("file-name");
+
+            preview.src = src;
+            preview.style.display = "block";
+            fileName.textContent = file.name; // Afficher le nom du fichier
+        }
+    }
+</script>
 </body>
 </html>
