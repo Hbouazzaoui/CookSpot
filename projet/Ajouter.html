@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Recette</title>
+    <link rel="stylesheet" href="/style/Ajoutter.css">
+</head>
+<body>
+
+<header>
+    <h1>AJOUTER UNE NOUVELLE RECETTE</h1>
+</header>  
+
+<div class="container">
+    <img src="/images/Ajoute.webp" class="image-preview" alt="Prévisualisation de l'image">
+
+    <div class="form-container">
+        <form>
+            <!-- Nom de la recette -->
+            <label for="recipe-name">Nom de la recette</label>
+            <input type="text" id="recipe-name" name="recipe-name" placeholder="Entrez le nom de la recette" required>
+
+            <!-- Description -->
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Entrez une description" required></textarea>
+
+            <!-- Temps de cuisson -->
+            <label for="cooking-time">Temps de cuisson</label>
+            <input type="text" id="cooking-time" name="cooking-time" placeholder="Entrez la durée" required>
+
+            <!-- Ajouter une image -->
+            <label for="file-ip-1">Ajouter une image</label>
+            <div class="imag">
+                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event)" hidden>
+                <button type="button" onclick="document.getElementById('file-ip-1').click()">Choisir un fichier</button>
+                <p id="file-name"></p>
+            </div>
+            <div class="preview">
+                <img src="" alt="Prévisualisation" id="file-ip-1-preview" style="display: none;">
+            </div>
+            
+            <!-- Ingrédients -->
+            <label for="ingredients">Ingrédients</label>
+            <textarea id="ingredients" name="ingredients" rows="4" placeholder="Entrez les ingrédients" required></textarea>
+
+            <!-- Catégorie -->
+            <label for="category">Catégorie</label>
+            <div class="choix">
+                <select id="category" name="category" required>
+                    <option value="">Choisissez</option>
+                    <option value="entrée">Entrée</option>
+                    <option value="plat-principal">Plat principal</option>
+                    <option value="dessert">Dessert</option>
+                </select>
+            </div>
+
+            <!-- Boutons -->
+            <div class="buttons">
+                <button type="submit">Enregistrer</button>
+                <button type="reset">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Script pour afficher l'aperçu de l'image -->
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var file = event.target.files[0];
+            var src = URL.createObjectURL(file);
+            var preview = document.getElementById("file-ip-1-preview");
+            var fileName = document.getElementById("file-name");
+
+            preview.src = src;
+            preview.style.display = "block";
+            fileName.textContent = file.name; // Afficher le nom du fichier
+        }
+    }
+</script>
+
+</body>
+</html>

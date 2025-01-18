@@ -1,0 +1,121 @@
+/* Styles globaux */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #d35400;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+header h1{
+    box-shadow: 5px 10px 20px rgba(54, 21, 239, 0.5);
+    display: inline;
+    padding:7px 30px;
+
+
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Formulaire */
+.form-container {
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Champs de formulaire */
+.form-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select,
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Style du select */
+.form-container .choix select {
+    margin-top: 5px;
+    padding: 10px;
+    color: #404040;
+    width: 100%;
+}
+
+/* Section image */
+.imag {
+    display: flex;
+    align-items: center;
+}
+
+.imag #file-ip-1 {
+    
+    display: flex;
+    width: 100%;
+    border: none;
+    width: 20%;
+    display: none;
+}
+.imag #file-name{
+    display: none;
+}
+.preview img {
+    margin: 15px 0px 15px 0px;
+    max-height: 290px;
+    max-width: 290px;
+    margin-left: 20px;
+    
+}
+
+/* Boutons */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    width: 48%;
+}
+
+.buttons button:hover {
+    background-color: #3498db;
+}
