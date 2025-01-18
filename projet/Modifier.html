@@ -13,7 +13,7 @@
             <img src="/images/upd.webp" alt="Aperçu de la recette">
         </div>
         <div class="form-container">
-            <form>
+            <form id="update-recipe-form">
                 <label for="recipe-name">Recipe Name</label>
                 <input type="text" id="recipe-name" placeholder="Entrez le nom de la recette">
 
@@ -23,6 +23,16 @@
                 <label for="cook-time">Cook Time</label>
                 <input type="text" id="cook-time" placeholder="Temps de cuisson">
 
+                        <!-- Ajouter une image -->
+                    <label for="file-ip-1">Ajouter une image Url</label>
+                    <div class="input-file" >
+                        <input type="text" id="file-ip-1" >
+                    </div>
+                    <div class="preview">
+                        <img src="" alt="Prévisualisation" id="file-ip-1-preview" style="display: none;">
+                    </div>
+                    
+
                 <label for="category">Category</label>
                 <input type="text" id="category" placeholder="Catégorie">
                 <label for="ingredients">Ingredients</label>
@@ -30,10 +40,76 @@
 
                 <div class="buttons">
                     <button type="submit">Enregistrer</button>
-                    <button type="button">Annuler</button>
+                    <button type="button">Annuler </button>
                 </div>
             </form>
         </div>
     </div>
 </body>
+
+
+
+<script>
+
+
+
+function getRecipes(){
+     return JSON.parse(localStorage.getItem('recipes'))|| [];
+   
+}
+
+
+function setRecipes(recipes){
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+}  
+
+
+function listRecipe() {
+
+        const showrecipe =getRecipes().filter(recipe => recipe.id === parseInt(localStorage.getItem('updateRecipeid')));
+        console.log(showrecipe);
+    
+
+        
+        document.getElementById('recipe-name').value = showrecipe[0].title;
+        document.getElementById('description').value = showrecipe[0].description;       
+        document.getElementById('cook-time').value = showrecipe[0].temp;               
+        document.getElementById('category').value = showrecipe[0].category;
+        document.getElementById('ingredients').value = showrecipe[0].ingredients;   
+        document.getElementById('file-ip-1').value=showrecipe[0].image;
+        document.getElementById('file-ip-1-preview').src = showrecipe[0].image;
+  }
+
+  listRecipe();
+  document.getElementById('update-recipe-form').addEventListener('submit', updateRecipe);
+   function updateRecipe(e) {
+        e.preventDefault();
+        const recipeId = localStorage.getItem('updateRecipeid');
+        const recipeName = document.getElementById('recipe-name').value;
+        const description = document.getElementById('description').value;
+        const cookingTime = document.getElementById('cook-time').value;
+        const category = document.getElementById('category').value;
+        const ingredients = document.getElementById('ingredients').value;
+        const image = document.getElementById('file-ip-1').value;
+
+        const updatedRecipe = {
+        id: recipeId,
+        title: recipeName,    
+        description: description,              
+         image: image,          
+        category: category,
+        temp: cookingTime,          
+        ingredients: ingredients          
+                            };  
+
+        const recipes = getRecipes();                            
+        const recipeIndex = recipes.findIndex(recipe => recipe.id === parseInt(recipeId));        
+        recipes[recipeIndex] = updatedRecipe;    
+        localStorage.setItem('recipes', JSON.stringify(recipes)); 
+
+        console.log(recipes);
+        location.assign('/projet/Accueil.html');
+  } 
+
+</script>
 </html>
