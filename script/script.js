@@ -124,7 +124,7 @@ function deleteRecipe(id) {
 
 
 function createRecipe(){
-    location.assign('Ajouter_modifier.html');
+    location.assign('Ajouter.html');
 }
 
 
@@ -132,7 +132,7 @@ function createRecipe(){
 
 function updateRecipe(id){
     localStorage.setItem('updateRecipeid',id);
-    location.assign('update .html');
+    location.assign('Modifier.html');
 
 }
 

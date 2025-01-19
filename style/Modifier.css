@@ -12,6 +12,13 @@
             font-size: 1.8em;
             font-weight: bold;
         }
+        header h1{
+            box-shadow: 5px 10px 20px rgba(54, 21, 239, 0.5);
+            display: inline;
+            padding:7px 30px;
+
+
+        }
 
         .container {
             display: flex;
@@ -21,18 +28,49 @@
         }
 
         .form-container {
-            background: white;
-            color: black;
-            padding: 20px;
+            background-color: #d35400;
+            color: rgb(245, 243, 239);
+            padding: 50px;
             border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 20px rgba(22, 21, 21, 0.5);
             width: 50%;
         }
+                        /* Section image */
+                .imag {
+                    display: flex;
+                    align-items: center;
+                    
+                }
+
+                .imag #file-ip-1 {
+
+                    display: flex;
+                    width: 100%;
+                    border: none;
+                    width: 20%;
+                    display: none;
+                }
+                .imag #file-name{
+                    display: none;
+                }
+                .preview img {
+                    margin: 15px 0px 15px 0px;
+                    max-height: 290px;
+                    max-width: 290px;
+                    margin-left: 20px;
+
+                }
+          /* .preview img{
+             max-height:120px ;
+             max-width: 120px;
+             margin-left: 50px;
+          } */
 
         .form-container label {
             font-weight: bold;
             display: block;
             margin-top: 10px;
+
         }
 
         .form-container input,
@@ -44,6 +82,10 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1em;
+            background: #cdd0d2ef;
+            box-shadow: 0px 0px 20px rgba(22, 21, 21, 0.5);
+
+
         }
 
         .form-container button {
@@ -76,3 +118,13 @@
             max-width: 100%;
             border-radius: 10px;
         }
+        .catigori{
+            width: 100%;
+            height: 42px;
+            background: #cdd0d2ef;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+
+        }
+        
