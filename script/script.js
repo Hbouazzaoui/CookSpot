@@ -1,54 +1,8 @@
 
-
-
 function getRecipes(){
-    // return JSON.parse(localStorage.getItem('recipes'));
-    return [
-        {
-            id: 1,
-            title: "Recipe 1",
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At voluptatibus tenetur",
-            image: "/images/cake1.jpg",
-            category: "Dessert",
-            temp: "30 min"
-        },
-        {
-            id: 2,
-            title: "Recipe 2",
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At voluptatibus tenetur",
-            image: "/images/cake1.jpg",
-            category: "Main Course",
-            temp: "45 min"
-        },
-        {
-            id: 3,
-            title: "Recipe 3",
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At voluptatibus tenetur",
-            image: "/images/cake3.jpg",
-            category: "Dessert",
-            temp: "15 min"
-        },
-        {
-            id: 4,
-            title: "Recipe 4",
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At voluptatibus tenetur",
-            image: "/images/cake4.jpg",
-            category: "Snacks",
-            temp: "10 min"
-        },
-        {
-            id: 5,
-            title: "Recipe 5",
-            description: "Gateau délicieux",
-            image: "/images/cake4.jpg",
-            category: "Main Course",
-            temp: "60 min"
-        }
-    ] || [];
+
+     return JSON.parse(localStorage.getItem('recipes'))|| [];
 }
-
-const recipesAll=getRecipes();
-
 
 
 function setRecipes(recipes){
@@ -56,10 +10,9 @@ function setRecipes(recipes){
 }
 
 
-
 function displayRecipes() {
 
-    const recipes = recipesAll|| [];
+    const recipes = getRecipes() || [];
     const container = document.getElementById('recipe-container');
     
     
@@ -104,7 +57,6 @@ function displayRecipes() {
 }
 
 
-
 document.getElementById('search').addEventListener('input', displayRecipes);
 document.getElementById('category').addEventListener('change', displayRecipes);
 document.getElementById('temps').addEventListener('change', displayRecipes);
@@ -115,20 +67,17 @@ displayRecipes();
 
 function deleteRecipe(id) {
     console.log(id);
-    const recipes = recipesAll;
+    const recipes = getRecipes();
     const recipeIndex = recipes.findIndex(recipe => recipe.id === parseInt(id))
         recipes.splice(recipeIndex, 1);
+        setRecipes(recipes);
+
         displayRecipes();
     }
-
-
 
 function createRecipe(){
     location.assign('Ajouter.html');
 }
-
-
-
 
 function updateRecipe(id){
     localStorage.setItem('updateRecipeid',id);

@@ -65,7 +65,7 @@
                     </ol>
           </div>
           <div class="recipe-image2 text-center">
-            <img src="/images/image.png" class="img-fluid rounded" alt="Recipe Image">
+            <img src="/images/image.png" class="img-fluid rounded" id="img"     alt="Recipe Image">
           </div>
           <div class="steps-p">
             <p>On peut accompagner ce plat savoureux avec de la semoule ou des pommes de terre cuites à l’eau.</p>
@@ -82,5 +82,34 @@
     
   </footer>
 </body>
-<script src="/script/Contacte.js"></script>
+
+
+
+
+  <script>
+
+function getRecipes(){
+     return JSON.parse(localStorage.getItem('recipes'))|| [];  
+}
+
+
+function setRecipes(recipes){
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+}   
+
+
+function showRecipe() {
+    const recipes = getRecipes();  
+   
+    const showrecipe =getRecipes().filter(recipe => recipe.id == parseInt(localStorage.getItem('showRecipeid')));
+    console.log(showrecipe);  
+  
+    
+
+  }
+
+  showRecipe();
+
+
+</script> 
 </html>

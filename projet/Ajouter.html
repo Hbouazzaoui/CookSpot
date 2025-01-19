@@ -16,7 +16,7 @@
     <img src="/images/Ajoute.webp" class="image-preview" alt="Prévisualisation de l'image">
 
     <div class="form-container">
-        <form>
+        <form id="add-recipe-form">
             <!-- Nom de la recette -->
             <label for="recipe-name">Nom de la recette</label>
             <input type="text" id="recipe-name" name="recipe-name" placeholder="Entrez le nom de la recette" required>
@@ -30,11 +30,9 @@
             <input type="text" id="cooking-time" name="cooking-time" placeholder="Entrez la durée" required>
 
             <!-- Ajouter une image -->
-            <label for="file-ip-1">Ajouter une image</label>
-            <div class="imag">
-                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event)" hidden>
-                <button type="button" onclick="document.getElementById('file-ip-1').click()">Choisir un fichier</button>
-                <p id="file-name"></p>
+            <label for="file-ip-1">Ajouter une image Url</label>
+            <div class="input-file" >
+                <input type="text" id="file-ip-1" >
             </div>
             <div class="preview">
                 <img src="" alt="Prévisualisation" id="file-ip-1-preview" style="display: none;">
@@ -64,20 +62,65 @@
     </div>
 </div>
 
+
+
 <!-- Script pour afficher l'aperçu de l'image -->
 <script>
-    function showPreview(event) {
-        if (event.target.files.length > 0) {
-            var file = event.target.files[0];
-            var src = URL.createObjectURL(file);
-            var preview = document.getElementById("file-ip-1-preview");
-            var fileName = document.getElementById("file-name");
 
-            preview.src = src;
-            preview.style.display = "block";
-            fileName.textContent = file.name; // Afficher le nom du fichier
-        }
-    }
+
+
+
+function getRecipes(){
+     return JSON.parse(localStorage.getItem('recipes'))|| [];
+ 
+}
+
+
+function setRecipes(recipes){
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+}  
+
+
+
+function getId(){
+    return parseInt(localStorage.getItem('id'));
+}
+
+function setId(id) {
+    localStorage.setItem('id', id); 
+
+}
+
+
+    function ajouter(event) {
+        event.preventDefault();
+       const name = document.getElementById('recipe-name').value;
+       const description = document.getElementById('description').value;
+       const cookingTime = document.getElementById('cooking-time').value;
+       const category = document.getElementById('category').value;
+       const ingredients = document.getElementById('ingredients').value;
+       const image = document.getElementById('file-ip-1').value;
+
+       const recipe = {
+            id:getId()||1,
+           title: name,
+           description: description,
+           temp: cookingTime,
+           category: category,
+           ingredients: ingredients,
+           image: image
+       };
+
+       setId(getId() + 1);
+
+       const recipes = getRecipes();
+       recipes.push(recipe);
+       setRecipes(recipes); 
+
+       console.log(recipes);        
+       location.assign('/projet/Accueil.html');
+    }        
+    document.getElementById('add-recipe-form').addEventListener('submit', ajouter);                   
 </script>
 
 </body>
